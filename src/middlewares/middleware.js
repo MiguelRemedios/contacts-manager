@@ -4,8 +4,7 @@ module.exports.middleware = (req, res, next) => {
 };
 
 module.exports.checkCsrfError = (err, req, res, next) => {
-  // console.log("MIDDLEWARE CSRF");
-  if (err && err.code === "EBADCSRFTOKEN") {
+  if (err) {
     return res.render("404");
   }
 };
