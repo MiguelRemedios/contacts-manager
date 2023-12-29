@@ -1,21 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <section class="container">
-      <h1>Lorem Normal</h1>
+<%- include('includes/head') %> <%- include('includes/nav') %>
 
-      <form action="/" method="POST">
-        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-        <label>Client:</label>
-        <input type="text" name="name" />
-        <button type="submit">Submit</button>
-      </form>
-    </section>
-    <script src="./assets/js/bundle.js"></script>
-  </body>
-</html>
+<container class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-4">
+      <h1 class="text-center">Contacts Manager</h1>
+      <p class="text-center lead">
+        Save your contacts details and remain organised
+      </p>
+      <div class="row">
+        <div class="col my-3">
+          <div class="alert alert-danger">Error</div>
+        </div>
+      </div>
+      <div class="responsive-table">
+        <table class="table my-2">
+          <tr>
+            <td>Miguel</td>
+            <td>Remédios</td>
+            <td>12321312234</td>
+            <td>miguelremediioss@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Miguel</td>
+            <td>Remédios</td>
+            <td>12321312234</td>
+            <td>miguelremediioss@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Miguel</td>
+            <td>Remédios</td>
+            <td>12321312234</td>
+            <td>miguelremediioss@gmail.com</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</container>
+
+<%- include('includes/footer') %>
