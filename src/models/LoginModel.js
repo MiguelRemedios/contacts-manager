@@ -18,14 +18,28 @@ class Login {
 
   async register() {
     this.validate();
+    //Checking errors from db query
     if (this.errors.length > 0) return;
 
+    await this.userExists();
+
+    //Re-checking if there are any errors from another db query
+    if (this.errors.length > 0) return;
+
+    const salt = bcryptjs.genSaltSync();
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
+
     try {
-      const salt = bcryptjs.genSaltSync();
-      this.body.password = bcryptjs.hashSync(this.body.password, salt);
       this.user = await LoginModel.create(this.body);
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  async userExists() {
+    const user = await LoginModel.findOne({ email: this.body.email });
+    if (user) {
+      this.errors.push("User already exists");
     }
   }
 
