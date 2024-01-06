@@ -10,8 +10,7 @@
         Save your contacts details and remain organised
       </p>
 
-      <%- include('includes/messages'); %>
-
+      <%- include('includes/messages'); %> <% if(contacts.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-4">
           <% contacts.forEach(contact => { %>
@@ -32,6 +31,10 @@
           <% });%>
         </table>
       </div>
+      <% } else { %>
+      <hr />
+      <p class="lead text-center">No contacts yet!</p>
+      <% } %>
     </div>
 
     <div class="col-lg-2"></div>
