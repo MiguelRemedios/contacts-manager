@@ -29,7 +29,6 @@ module.exports.register = async (req, res) => {
 module.exports.editIndex = async (req, res) => {
   if (!req.params.id) res.render("404");
   const contact = await Contact.searchId(req.params.id);
-  console.log(contact);
 
   if (!contact) res.render("404");
   res.render("contact", { contact });
@@ -44,7 +43,7 @@ module.exports.edit = async (req, res) => {
     if (contact.errors.length > 0) {
       req.flash("errors", contact.errors);
       req.session.save(() =>
-        res.redirect("/contact/index/${contact.contact._id}")
+        res.redirect(`/contact/index/${contact.contact._id}`)
       );
       return;
     }
@@ -58,4 +57,14 @@ module.exports.edit = async (req, res) => {
     console.log(error);
     return res.render("404");
   }
+};
+
+module.exports.delete = async (req, res) => {
+  if (!req.params.id) res.render("404");
+  const contact = await Contact.deleteContact(req.params.id);
+
+  if (!contact) res.render("404");
+  req.flash("success", "Successfully deleted !");
+  req.session.save(() => res.redirect("/"));
+  return;
 };

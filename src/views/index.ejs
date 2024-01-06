@@ -13,13 +13,23 @@
       <%- include('includes/messages'); %>
 
       <div class="responsive-table">
-        <table class="table my-2">
+        <table class="table my-4">
+          <% contacts.forEach(contact => { %>
           <tr>
-            <td>Miguel</td>
-            <td>Remédios</td>
-            <td>12321312234</td>
-            <td>miguelremediioss@gmail.com</td>
+            <td><%= contact.firstName %></td>
+            <td><%= contact.lastName %></td>
+            <td><%= contact.email %></td>
+            <td><%= contact.phoneNr %></td>
+            <td>
+              <a href="/contact/index/<%= contact._id %>">Edit</a>
+            </td>
+            <td>
+              <a class="text-danger" href="/contact/delete/<%= contact._id %>"
+                >Delete</a
+              >
+            </td>
           </tr>
+          <% });%>
         </table>
       </div>
     </div>
