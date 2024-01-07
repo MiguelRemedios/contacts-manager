@@ -34,7 +34,14 @@ export default class Login {
       let p = document.createElement("p");
       let errorMsg = document.createTextNode("Invalid email address");
       p.appendChild(errorMsg);
-      p.classList.add("mt-1", "alert-danger", "error");
+      p.classList.add(
+        "mt-1",
+        "alert-danger",
+        "error",
+        "rounded",
+        "px-1",
+        "w-50"
+      );
       emailInput.after(p);
       error = true;
     }
@@ -45,7 +52,14 @@ export default class Login {
         "Password must be between 3 and 50 characters long"
       );
       p.appendChild(errorMsg);
-      p.classList.add("mt-1", "alert-danger", "error");
+      p.classList.add(
+        "mt-1",
+        "alert-danger",
+        "error",
+        "rounded",
+        "px-1",
+        "w-50"
+      );
       passwordInput.after(p);
       error = true;
     }
